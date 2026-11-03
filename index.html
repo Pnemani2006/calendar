@@ -421,7 +421,8 @@
     const idx = {
       date: col("date"), time: col("time"), title: col("title"),
       location: col("location"), description: col("description"),
-      link: col("link"), color: col("color", "colour"), image: col("image", "photo", "picture")
+      link: col("link"), color: col("color", "colour"),
+      image: head.findIndex((h) => /image|photo|picture|pic/.test(h))
     };
     if (idx.date < 0 || idx.title < 0) throw new Error('Sheet needs at least "Date" and "Title" columns in row 1.');
     const get = (r, k) => (idx[k] >= 0 ? (r[idx[k]] || "").trim() : "");
